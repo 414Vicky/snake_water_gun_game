@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>snake water gun game</title>
+</head>
+<body>
+    <h1 class="title">play snake water gun game</h1>
+    <h2>characters: snake , water gun</h2>
+    <h2 class="rules">
+        <pre>
+            Rules:
+            1.water can drown the gun.
+            2. gun could shoot the snake.
+            3. snake could drink the water.
+        </pre>
+    </h2>
+    <hr><br><br>
+    <div class="winner"></div>
+    <br><hr><br>
+
+    <script>
+        let user = prompt("enter snake , water or gun:");
+        let comp_1 = Math.floor(Math.random()*3);
+        let comp = ['snake' , 'water', 'gun'][comp_1];
+
+
+        const match =() =>{
+            if( comp==='snake' && user ==='water'){
+                return "comp"
+            }
+            else if(comp==="gun" && user ==="water"){
+                return "user"
+            }
+            else if(comp==="snake" && user ==="gun"){
+                return "user"
+            }
+            else if(comp==="gun" && user ==="snake"){
+                return "comp"
+            }
+            else if(comp ==="water" && user ==="gun"){
+                return "comp"
+            }
+            else if(comp ==="water" && user ==="snake"){
+                return "user"
+            }
+            else{
+                return "none"
+            }
+        }
+
+        let result = match(comp,user)
+        let winner = document.querySelector('.winner')
+        if(comp===user){
+            document.write(`comp choose:${comp} <br> you choose:${user}`)
+            winner.innerHTML = `you hv entered same charecter . |no winnwe|...`
+        }
+
+        else if(result ==="user"){
+            document.write(`comp choose: ${comp} <br> u choose: ${user}`)
+            winner.innerHTML = `you are winner`
+
+        }
+
+        else if (result ==="comp"){
+            document.write(`comp choose : ${comp} <br> you choose :${user}`)
+            winner.innerHTML= `comp is winner`
+        }
+
+        else{
+            winner.innerHTML=` you have not entered any of the charecter. try again...`
+        }
+    </script>
+
+</body>
+</html>
